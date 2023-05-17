@@ -39,11 +39,15 @@ const recoveryLocalStore = () => {
 
 const applyColorPalette = (arrayColor) => {
   const divColors = document.querySelectorAll(divColorsPaletteSelector);
+
   for (let index = 0; index < arrayColor.length; index += 1) {
     if (index === 0) {
-      divColors[index].classList.add('selected')
+      divColors[index].classList.add('selected');
+      divColors[index].style.backgroundColor = arrayColor[index];
+    } else {
+      divColors[index].style.backgroundColor = arrayColor[index];
+      divColors[index].className = 'color';
     }
-    divColors[index].style.backgroundColor = arrayColor[index];
   }
 };
 
@@ -78,6 +82,23 @@ const createPixelBoard = () => {
   }
 };
 
+const changeSelectedColor = (element) => {
+  const isElementSelected = element.classList.contains('selected');
+  const existElementSelected = document.querySelector('.selected');
+  if (!isElementSelected && !existElementSelected) {
+    element.classList.add('selected');
+  } else {
+    document.querySelector('.selected').classList.remove('selected');
+    element.classList.add('selected');
+  }
+};
+
+const paintPixelDiv = (element) => {
+  const colorSelected = document.querySelector('.selected');
+  const pixelClicked = element;
+  pixelClicked.style.backgroundColor = colorSelected.style.backgroundColor;
+};
+
 const refreshColorPalette = () => {
   const buttonRefresh = document.querySelector('#button-random-color');
   buttonRefresh.addEventListener('click', () => {
@@ -88,6 +109,19 @@ const refreshColorPalette = () => {
   });
 };
 
+const addEventButtons = () => {
+  document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('color')) {
+      changeSelectedColor(event.target);
+    }
+
+    if (event.target.classList.contains('pixel')) {
+      paintPixelDiv(event.target);
+    }
+  });
+};
+
 createColorPalette();
 createPixelBoard();
 refreshColorPalette();
+addEventButtons();
