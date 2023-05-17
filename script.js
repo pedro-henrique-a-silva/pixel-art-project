@@ -40,6 +40,9 @@ const recoveryLocalStore = () => {
 const applyColorPalette = (arrayColor) => {
   const divColors = document.querySelectorAll(divColorsPaletteSelector);
   for (let index = 0; index < arrayColor.length; index += 1) {
+    if (index === 0) {
+      divColors[index].classList.add('selected')
+    }
     divColors[index].style.backgroundColor = arrayColor[index];
   }
 };
