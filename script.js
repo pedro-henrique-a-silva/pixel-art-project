@@ -1,5 +1,7 @@
 const colorPallet = document.querySelector('#color-palette');
+const pixelBoard = document.querySelector('#pixel-board');
 const divColorsPaletteSelector = '#color-palette .color';
+
 const guide = ['#000000', '#808080', '#6A5ACD', '#000080', '#00BFFF',
   '#008080', '#006400', '#8B4513', '#D2691E', '#4B0082',
   '#8B008B', '#FF0000', '#FF4500', '#FFFF00', '#B0E0E6'];
@@ -59,6 +61,20 @@ const createColorPalette = () => {
   colorPallet.appendChild(buttonRefresh);
 };
 
+const createPixelBoard = () => {
+  for (let indexPixel = 0; indexPixel < 5; indexPixel += 1) {
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('rowDiv');
+    for (let indexRow = 0; indexRow < 5; indexRow += 1) {
+      const pixelDiv = document.createElement('div');
+      pixelDiv.classList.add('pixel');
+      rowDiv.appendChild(pixelDiv);
+    }
+
+    pixelBoard.appendChild(rowDiv);
+  }
+};
+
 const refreshColorPalette = () => {
   const buttonRefresh = document.querySelector('#button-random-color');
   buttonRefresh.addEventListener('click', () => {
@@ -70,4 +86,5 @@ const refreshColorPalette = () => {
 };
 
 createColorPalette();
+createPixelBoard();
 refreshColorPalette();
