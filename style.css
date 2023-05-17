@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+  border: 1px solid red;
+}
+
+main {
+  margin-top: 45px;
+  border: 1px solid blue;
+}
