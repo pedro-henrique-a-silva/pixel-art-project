@@ -21,6 +21,7 @@ main {
 #color-palette {
   margin: auto;
   width: fit-content;
+  border: 1px solid green ;
 }
 
 .color {
@@ -29,4 +30,15 @@ main {
   height: 50px;
   border: 1px solid black;
   margin: 5px;
+}
+
+.refresh-colors {
+  display: inline-block;
+  width: 81px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 5px 5px 0 15px;
+  vertical-align: top;
+
 }
