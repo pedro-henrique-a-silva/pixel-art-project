@@ -51,6 +51,18 @@ const applyColorPalette = (arrayColor) => {
   }
 };
 
+const createButtons = () => {
+  const buttonRefresh = document.createElement('button');
+
+  buttonRefresh.className = 'buttons';
+
+  buttonRefresh.id = 'button-random-color';
+
+  buttonRefresh.textContent = 'Cores aleatórias';
+
+  return [buttonRefresh];
+};
+
 const createColorPalette = () => {
   const colorGuide = recoveryLocalStore();
 
@@ -61,11 +73,9 @@ const createColorPalette = () => {
   }
 
   applyColorPalette(colorGuide);
-  const buttonRefresh = document.createElement('button');
-  buttonRefresh.className = 'refresh-colors';
-  buttonRefresh.id = 'button-random-color';
-  buttonRefresh.textContent = 'Cores aleatórias';
-  colorPallet.appendChild(buttonRefresh);
+  const buttons = createButtons();
+
+  colorPallet.appendChild(buttons[0]);
 };
 
 const createPixelBoard = () => {
@@ -79,6 +89,14 @@ const createPixelBoard = () => {
     }
 
     pixelBoard.appendChild(rowDiv);
+  }
+};
+
+const resetPixelBoard = () => {
+  const pixels = document.querySelectorAll('#pixel-board .pixel');
+
+  for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].style.backgroundColor = 'white';
   }
 };
 
@@ -117,6 +135,10 @@ const addEventButtons = () => {
 
     if (event.target.classList.contains('pixel')) {
       paintPixelDiv(event.target);
+    }
+
+    if (event.target.id === 'clear-board') {
+      resetPixelBoard();
     }
   });
 };
