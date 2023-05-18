@@ -147,7 +147,6 @@ const resizePixelBoard = (numberOfPixels) => {
   }
 
   localStorage.removeItem('pixelBoard');
-  console.log('resize', Number(numberOfPixels));
   createPixelBoard(Number(numberOfPixels));
 };
 
@@ -160,12 +159,24 @@ const resetPixelBoard = () => {
   localStorage.removeItem('pixelBoard');
 };
 
+const limitSizeBoard = (number) => {
+  let sizeNumber = number;
+  if (sizeNumber < 5) {
+    sizeNumber = 5;
+  }
+
+  if (sizeNumber > 50) {
+    sizeNumber = 50;
+  }
+  return sizeNumber;
+}
+
 const resizePixelBoardEvent = (element) => {
   const lenghtPixelBoard = element.previousElementSibling.value;
   if (lenghtPixelBoard === '') {
     alert('Board inválido!');
   } else {
-    resizePixelBoard(lenghtPixelBoard);
+    resizePixelBoard(limitSizeBoard(lenghtPixelBoard));
   }
 };
 
