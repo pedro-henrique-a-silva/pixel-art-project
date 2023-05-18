@@ -130,27 +130,26 @@ const createPixelBoard = (numberOfPixels) => {
 
 const initiatePixelBoard = () => {
   const paint = recoveryLocalStorePaint();
-  
   if (paint) {
-    const lengthPixelBoardRecovery = Object.keys(paint).length
+    const lengthPixelBoardRecovery = Object.keys(paint).length;
     createPixelBoard(lengthPixelBoardRecovery);
     restorePaint(paint);
   } else {
-    const numberOfPixels = document.querySelector('#board-size');
-    createPixelBoard(Number(numberOfPixels.value));
+    const numberOfPixels = 5;
+    createPixelBoard(Number(numberOfPixels));
   }
-}
+};
 
 const resizePixelBoard = (numberOfPixels) => {
   const pixelBoardChildrens = pixelBoard.querySelectorAll('.rowDiv');
   for (let index = 0; index < pixelBoardChildrens.length; index += 1) {
-    pixelBoardChildrens[index].remove()
+    pixelBoardChildrens[index].remove();
   }
 
   localStorage.removeItem('pixelBoard');
   console.log('resize', Number(numberOfPixels));
   createPixelBoard(Number(numberOfPixels));
-}
+};
 
 const resetPixelBoard = () => {
   const pixels = document.querySelectorAll('#pixel-board .pixel');
@@ -159,6 +158,15 @@ const resetPixelBoard = () => {
     pixels[index].style.backgroundColor = 'white';
   }
   localStorage.removeItem('pixelBoard');
+};
+
+const resizePixelBoardEvent = (element) => {
+  const lenghtPixelBoard = element.previousElementSibling.value;
+  if (lenghtPixelBoard === '') {
+    alert('Board inválido!');
+  } else {
+    resizePixelBoard(lenghtPixelBoard);
+  }
 };
 
 const changeSelectedColor = (element) => {
@@ -191,26 +199,13 @@ const refreshColorPalette = () => {
 
 const addEventButtons = () => {
   document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('color')) {
-      changeSelectedColor(event.target);
-    }
+    if (event.target.classList.contains('color')) changeSelectedColor(event.target);
 
-    if (event.target.classList.contains('pixel')) {
-      paintPixelDiv(event.target);
-    }
+    if (event.target.classList.contains('pixel')) paintPixelDiv(event.target);
 
-    if (event.target.id === 'clear-board') {
-      resetPixelBoard();
-    }
+    if (event.target.id === 'clear-board') resetPixelBoard();
 
-    if (event.target.id === 'generate-board') {
-      const lenghtPixelBoard = event.target.previousElementSibling.value;
-      if (lenghtPixelBoard === 0) {
-        alert('Board inválido!')
-      }else {
-        resizePixelBoard(lenghtPixelBoard);
-      }
-    }
+    if (event.target.id === 'generate-board') resizePixelBoardEvent(event.target);
   });
 };
 
