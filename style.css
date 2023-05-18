@@ -6,12 +6,10 @@
 
 header {
   text-align: center;
-  border: 1px solid green;
 }
 
 main {
   margin-top: 45px;
-  border: 1px solid blue;
 }
 
 #title {
@@ -21,7 +19,6 @@ main {
 #color-palette {
   margin: auto;
   width: fit-content;
-  border: 1px solid green;
 }
 
 .color {
@@ -45,7 +42,6 @@ main {
 
 #pixel-board {
   margin-top: 25px;
-  border: 1px solid red;
 }
 
 .rowDiv {
