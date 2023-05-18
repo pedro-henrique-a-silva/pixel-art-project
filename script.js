@@ -28,13 +28,35 @@ const savePaletteLocalStorage = () => {
   localStorage.setItem('colorPalette', JSON.stringify(colorGuide));
 };
 
-const recoveryLocalStore = () => {
+const recoveryLocalStorePalette = () => {
   const colorGuideLocalStorage = localStorage.getItem('colorPalette');
   if (colorGuideLocalStorage) {
     return JSON.parse(colorGuideLocalStorage);
   }
 
   return generateColorGuide(4);
+};
+
+const savePaintLocalStorage = () => {
+  const rowDivs = document.querySelectorAll('.rowDiv');
+  const objPaint = {};
+  for (let indexRow = 0; indexRow < rowDivs.length; indexRow += 1) {
+    const pixels = rowDivs[indexRow].querySelectorAll('.pixel');
+    objPaint[`linha_${indexRow}`] = [];
+
+    for (let indexPixel = 0; indexPixel < pixels.length; indexPixel += 1) {
+      const backgroundPixel = pixels[indexPixel].style.backgroundColor;
+      objPaint[`linha_${indexRow}`].push(backgroundPixel);
+    }
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(objPaint));
+};
+
+const recoveryLocalStorePaint = () => {
+  const LocalStoragePaint = localStorage.getItem('pixelBoard');
+  if (LocalStoragePaint) {
+    return JSON.parse(LocalStoragePaint);
+  }
 };
 
 const applyColorPalette = (arrayColor) => {
@@ -64,7 +86,7 @@ const createButtons = () => {
 };
 
 const createColorPalette = () => {
-  const colorGuide = recoveryLocalStore();
+  const colorGuide = recoveryLocalStorePalette();
 
   for (let index = 0; index < colorGuide.length; index += 1) {
     const divColor = document.createElement('div');
@@ -76,6 +98,22 @@ const createColorPalette = () => {
   const buttons = createButtons();
 
   colorPallet.appendChild(buttons[0]);
+};
+
+const restorePaint = (paint) => {
+  const rowDivs = document.querySelectorAll('.rowDiv');
+  const colorPixels = Object.values(paint);
+
+  for (let indexRow = 0; indexRow < colorPixels.length; indexRow += 1) {
+    const rowPixels = colorPixels[indexRow];
+    const rowDiv = rowDivs[indexRow].querySelectorAll('.pixel');
+    console.log(rowPixels);
+    console.log(rowDiv);
+
+    for (let indexPixel = 0; indexPixel < rowPixels.length; indexPixel += 1) {
+      rowDiv[indexPixel].style.backgroundColor = rowPixels[indexPixel];
+    }
+  }
 };
 
 const createPixelBoard = () => {
@@ -90,6 +128,12 @@ const createPixelBoard = () => {
 
     pixelBoard.appendChild(rowDiv);
   }
+
+  const paint = recoveryLocalStorePaint();
+
+  if (paint) {
+    restorePaint(paint);
+  }
 };
 
 const resetPixelBoard = () => {
@@ -98,6 +142,7 @@ const resetPixelBoard = () => {
   for (let index = 0; index < pixels.length; index += 1) {
     pixels[index].style.backgroundColor = 'white';
   }
+  localStorage.removeItem('pixelBoard');
 };
 
 const changeSelectedColor = (element) => {
@@ -115,6 +160,7 @@ const paintPixelDiv = (element) => {
   const colorSelected = document.querySelector('.selected');
   const pixelClicked = element;
   pixelClicked.style.backgroundColor = colorSelected.style.backgroundColor;
+  savePaintLocalStorage();
 };
 
 const refreshColorPalette = () => {
