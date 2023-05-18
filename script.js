@@ -107,8 +107,6 @@ const restorePaint = (paint) => {
   for (let indexRow = 0; indexRow < colorPixels.length; indexRow += 1) {
     const rowPixels = colorPixels[indexRow];
     const rowDiv = rowDivs[indexRow].querySelectorAll('.pixel');
-    console.log(rowPixels);
-    console.log(rowDiv);
 
     for (let indexPixel = 0; indexPixel < rowPixels.length; indexPixel += 1) {
       rowDiv[indexPixel].style.backgroundColor = rowPixels[indexPixel];
@@ -116,11 +114,11 @@ const restorePaint = (paint) => {
   }
 };
 
-const createPixelBoard = () => {
-  for (let indexPixel = 0; indexPixel < 5; indexPixel += 1) {
+const createPixelBoard = (numberOfPixels) => {
+  for (let indexPixel = 0; indexPixel < numberOfPixels; indexPixel += 1) {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('rowDiv');
-    for (let indexRow = 0; indexRow < 5; indexRow += 1) {
+    for (let indexRow = 0; indexRow < numberOfPixels; indexRow += 1) {
       const pixelDiv = document.createElement('div');
       pixelDiv.classList.add('pixel');
       rowDiv.appendChild(pixelDiv);
@@ -128,13 +126,31 @@ const createPixelBoard = () => {
 
     pixelBoard.appendChild(rowDiv);
   }
-
-  const paint = recoveryLocalStorePaint();
-
-  if (paint) {
-    restorePaint(paint);
-  }
 };
+
+const initiatePixelBoard = () => {
+  const paint = recoveryLocalStorePaint();
+  
+  if (paint) {
+    const lengthPixelBoardRecovery = Object.keys(paint).length
+    createPixelBoard(lengthPixelBoardRecovery);
+    restorePaint(paint);
+  } else {
+    const numberOfPixels = document.querySelector('#board-size');
+    createPixelBoard(Number(numberOfPixels.value));
+  }
+}
+
+const resizePixelBoard = (numberOfPixels) => {
+  const pixelBoardChildrens = pixelBoard.querySelectorAll('.rowDiv');
+  for (let index = 0; index < pixelBoardChildrens.length; index += 1) {
+    pixelBoardChildrens[index].remove()
+  }
+
+  localStorage.removeItem('pixelBoard');
+  console.log('resize', Number(numberOfPixels));
+  createPixelBoard(Number(numberOfPixels));
+}
 
 const resetPixelBoard = () => {
   const pixels = document.querySelectorAll('#pixel-board .pixel');
@@ -186,10 +202,19 @@ const addEventButtons = () => {
     if (event.target.id === 'clear-board') {
       resetPixelBoard();
     }
+
+    if (event.target.id === 'generate-board') {
+      const lenghtPixelBoard = event.target.previousElementSibling.value;
+      if (lenghtPixelBoard === 0) {
+        alert('Board inválido!')
+      }else {
+        resizePixelBoard(lenghtPixelBoard);
+      }
+    }
   });
 };
 
 createColorPalette();
-createPixelBoard();
+initiatePixelBoard();
 refreshColorPalette();
 addEventButtons();

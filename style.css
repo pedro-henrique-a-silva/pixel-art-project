@@ -67,3 +67,24 @@ main div {
   width: fit-content;
   margin: auto;
 }
+
+.board-size-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.board-size-container button {
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.board-size-container input {
+  line-height: 20px;
+  width: 60px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+
+
