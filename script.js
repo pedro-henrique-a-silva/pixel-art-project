@@ -19,6 +19,18 @@ const generateColorGuide = (amountOfColor) => {
   return arrayOfColor;
 };
 
+const limitSizeBoard = (number) => {
+  let sizeNumber = number;
+  if (sizeNumber < 5) {
+    sizeNumber = 5;
+  }
+
+  if (sizeNumber > 50) {
+    sizeNumber = 50;
+  }
+  return sizeNumber;
+};
+
 const savePaletteLocalStorage = () => {
   const colorsToSave = document.querySelectorAll(divColorsPaletteSelector);
   const colorGuide = [];
@@ -57,6 +69,18 @@ const recoveryLocalStorePaint = () => {
   if (LocalStoragePaint) {
     return JSON.parse(LocalStoragePaint);
   }
+};
+
+const recoveryLocalStoreSizeBoard = () => {
+  const LocalStorageSize = localStorage.getItem('boardSize');
+  if (LocalStorageSize) {
+    return JSON.parse(LocalStorageSize);
+  }
+};
+
+const saveSizeBoardLocalStorage = (sizeNumber) => {
+  const boardSizeNumber = limitSizeBoard(sizeNumber);
+  localStorage.setItem('boardSize', boardSizeNumber);
 };
 
 const applyColorPalette = (arrayColor) => {
@@ -114,7 +138,8 @@ const restorePaint = (paint) => {
   }
 };
 
-const createPixelBoard = (numberOfPixels) => {
+const createPixelBoard = (number) => {
+  const numberOfPixels = limitSizeBoard(number);
   for (let indexPixel = 0; indexPixel < numberOfPixels; indexPixel += 1) {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('rowDiv');
@@ -135,7 +160,7 @@ const initiatePixelBoard = () => {
     createPixelBoard(lengthPixelBoardRecovery);
     restorePaint(paint);
   } else {
-    const numberOfPixels = 5;
+    const numberOfPixels = recoveryLocalStoreSizeBoard() || 5;
     createPixelBoard(Number(numberOfPixels));
   }
 };
@@ -159,24 +184,13 @@ const resetPixelBoard = () => {
   localStorage.removeItem('pixelBoard');
 };
 
-const limitSizeBoard = (number) => {
-  let sizeNumber = number;
-  if (sizeNumber < 5) {
-    sizeNumber = 5;
-  }
-
-  if (sizeNumber > 50) {
-    sizeNumber = 50;
-  }
-  return sizeNumber;
-}
-
 const resizePixelBoardEvent = (element) => {
   const lenghtPixelBoard = element.previousElementSibling.value;
   if (lenghtPixelBoard === '') {
     alert('Board inválido!');
   } else {
-    resizePixelBoard(limitSizeBoard(lenghtPixelBoard));
+    saveSizeBoardLocalStorage(lenghtPixelBoard);
+    resizePixelBoard(lenghtPixelBoard);
   }
 };
 
