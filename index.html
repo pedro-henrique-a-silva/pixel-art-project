@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Pixel Art's</title>
 </head>
@@ -13,13 +16,17 @@
   </header>
   
   <main>
+    <div class="backgroun-trasparent"></div>
     <h1 id="title">Paleta de Cores</h1>
-    <section id="color-palette"> </section>
+    
+    <section id="color-palette"></section>
+
     <div class="board-size-container">
       <input id="board-size" type="number" maxlength="2" min="1" max="50"pattern="^[0-9]+"> 
-      <button id="generate-board">VQV</button>
+      <button id="generate-board" class="buttons-vqv">VQV</button>
     </div>
-    <div><button id="clear-board" class="buttons">Limpar</button></div>
+
+    <div class="clear-button"><button id="clear-board" class="buttons">Limpar</button></div>
     <section id="pixel-board"></section>
   </main>
 
