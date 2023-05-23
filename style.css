@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url(sunset.jpg);
+  background-image: url('sunset.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
@@ -18,14 +18,14 @@ header {
 
 main {
   position: relative;
-  margin: 40px auto; 
+  margin: 40px auto;
   width: fit-content;
   padding: 0 60px;
 }
 
 h1 {
   font-family: 'Press Start 2P', cursive;
-  color: #FFAB07;
+  color: #ffab07;
 
 }
 
@@ -36,7 +36,6 @@ h1 {
 
 .backgroun-trasparent {
   position: absolute;
-  top: 0;
   height: 100%;
   width: 100%;
   background-color: white;
@@ -45,7 +44,6 @@ h1 {
   left: 50%;
   border-radius: 50px;
   transform: translateX(-50%);
-  
 }
 
 #color-palette {

@@ -2,9 +2,9 @@ const colorPallet = document.querySelector('#color-palette');
 const pixelBoard = document.querySelector('#pixel-board');
 const divColorsPaletteSelector = '#color-palette .color';
 
-const guide = ['#000000', '#808080', '#6A5ACD', '#000080', '#00BFFF',
-  '#008080', '#006400', '#8B4513', '#D2691E', '#4B0082',
-  '#8B008B', '#FF0000', '#FF4500', '#FFFF00', '#B0E0E6'];
+const guide = ['#000000', '#808080', '#6a5acd', '#000080', '#00bfff',
+  '#008080', '#006400', '#8b4513', '#d2691e', '#4b0082',
+  '#8b008b', '#ff0000', '#ff4500', '#ffff00', '#b0e0e6'];
 
 const generateRandomNumber = (number) => Math.floor(Math.random() * (number));
 
