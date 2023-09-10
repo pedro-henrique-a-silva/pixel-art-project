@@ -1,8 +1,8 @@
-# Título do Projeto
+# Pixel Arts
 
 ## Descrição
 
-Este repositório está em construção. Aqui você encontrará [breve resumo do projeto ou curso] e seus componentes.
+Neste projeto, desenvolvi uma ferramenta de arte baseada em pixels que permite aos usuários escolher livremente suas cores e criar pinturas incríveis. Para criar essas funcionalidades, utilizei não apenas JavaScript extensivamente, mas também apliquei manipulação do DOM.
 
 ## Conteúdo
 
@@ -11,11 +11,11 @@ Este repositório está em construção. Aqui você encontrará [breve resumo do
 
 ## Instruções de Instalação
 
-Descreva aqui as instruções necessárias para configurar o ambiente de desenvolvimento e instalar quaisquer dependências.
+Use o comando `npm install` para instalar as dependências.
 
 ## Como Usar
 
-Explique como usar. Forneça exemplos de código, capturas de tela ou demonstrações.
+Visualize e se divirta com esse projeto atravez da extensão do vscode live server.
 
 ## Contribuição
 
@@ -29,5 +29,4 @@ Se você deseja contribuir para este projeto, siga estas etapas para contribuir:
 
 Lembre-se de que todas as contribuições são valorizadas e ajudam a tornar este projeto melhor para todos!
 
-## Continue como desejar este Readme.md
 **Observação:** Este repositório está em construção e será atualizado regularmente. Sinta-se à vontade para adicionar mais seções conforme necessário para o seu projeto.
