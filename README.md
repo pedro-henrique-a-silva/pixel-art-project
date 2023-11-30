@@ -2,31 +2,19 @@
 
 ## Descrição
 
-Neste projeto, desenvolvi uma ferramenta de arte baseada em pixels que permite aos usuários escolher livremente suas cores e criar pinturas incríveis. Para criar essas funcionalidades, utilizei não apenas JavaScript extensivamente, mas também apliquei manipulação do DOM.
+Bem-vindo ao Pixel Art Tool, uma ferramenta de arte baseada em pixels que permite aos usuários liberarem sua criatividade escolhendo cores e criando pinturas incríveis!
 
-## Conteúdo
+## Tecnologias Utilizadas
 
-- [Instruções de Instalação](#instruções-de-instalação)
-- [Como Usar](#como-usar)
+- **JavaScript:** Desenvolvi a funcionalidade principal da ferramenta utilizando JavaScript. Fiz extenso uso de eventListeners para interatividade dinâmica.
 
-## Instruções de Instalação
-
-Use o comando `npm install` para instalar as dependências.
+- **Manipulação do DOM:** Para proporcionar uma experiência de usuário fluida e responsiva, implementei também a manipulação do DOM.
 
 ## Como Usar
 
-Visualize e se divirta com esse projeto atravez da extensão do vscode live server.
+1. Clone este repositório em sua máquina local:
 
-## Contribuição
+   ```bash
+   git clone git@github.com:pedro-henrique-a-silva/pixel-art-project.git
 
-Se você deseja contribuir para este projeto, siga estas etapas para contribuir:
-
-1. Crie um fork deste repositório.
-2. Crie um novo branch com um nome descritivo: `git checkout -b minha-contribuicao`
-3. Faça suas alterações e commit: `git commit -m "Adicionando minha contribuição"`
-4. Envie seu branch para o repositório: `git push origin minha-contribuicao`
-5. Abra um pull request neste repositório e aguarde o feedback.
-
-Lembre-se de que todas as contribuições são valorizadas e ajudam a tornar este projeto melhor para todos!
-
-**Observação:** Este repositório está em construção e será atualizado regularmente. Sinta-se à vontade para adicionar mais seções conforme necessário para o seu projeto.
+2. Basta abrir o arquivo `index.html` em seu navegador
