@@ -17,4 +17,12 @@ Bem-vindo ao Pixel Art Tool, uma ferramenta de arte baseada em pixels que permit
    ```bash
    git clone git@github.com:pedro-henrique-a-silva/pixel-art-project.git
 
-2. Basta abrir o arquivo `index.html` em seu navegador
+2. Basta abrir o arquivo `index.html` em seu navegador preferido
+
+3. Explore a paleta de cores e clique nos pixels para começar a criar sua obra de arte pixelizada.
+
+4. Divirta-se experimentando com as diversas opções de cores e padrões!
+
+## Contribuições
+
+Contribuições são bem vindas! Sinta-se à vontade para abrir issues, enviar pull requests ou fornecer feedback para melhorarmos juntos.
